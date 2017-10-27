@@ -17,12 +17,52 @@
 
 	//echo $a->insert(['nom'=>'test1','descr'=>'qzfzqf','tarif'=>'20','id_categ'=>'1']);
 
-
+/*
 foreach ($a->get() as $key => $value) {
 		echo '<br>'.$key.' : '.$value;
-};
+}; */
 
+	echo '<br>';
 
 	$art = new SGBD\Article;
-	$art->id = 77;
+	$art->id = 72;
 	$art->delete();
+
+/*
+	$art2 = new SGBD\Article;
+	$art2->nom = 'test2';
+	$art2->descr = 'test';
+	$art2->tarif = 20;
+	$art2->id_categ = 1;
+	$art2->insert();
+	echo '<br>'.$art2->id; */
+
+	$liste = SGBD\Article::all();
+	foreach ($liste as $article) print $article->nom;
+
+	echo '<br>';
+
+	$l = SGBD\Article::find(71, ['nom','tarif']);   
+	$article = $l[0];
+	print_r($article);
+
+	echo '<br><br>';
+
+	$l = SGBD\Article::find( ['tarif', '<=', 100 ], ['nom', 'tarif'] );
+	print_r($l);
+
+	echo '<br><br>';
+
+	$l = SGBD\Article::find( [['nom','like','%test2%'],['tarif', '<=', 100 ]], ['nom', 'tarif'] );
+	print_r($l);
+
+	echo '<br><br>';
+
+	$l = SGBD\Article::first(['tarif', '<=', 100 ]);   
+	print_r($l);
+
+	echo '<br><br>';
+
+	$a=SGBD\Article::first(64);
+	$categorie = $a->belongs_to('SGBD\Categorie', 'id_categ');
+	print_r($categorie);

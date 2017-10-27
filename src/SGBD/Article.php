@@ -4,7 +4,7 @@
 	
 	class Article extends Model {
 
-		protected $table = 'article';
-		protected $primaryKey = 'id';
+		protected static $table = 'article';
+		protected static $primaryKey = 'id';
 
 	}

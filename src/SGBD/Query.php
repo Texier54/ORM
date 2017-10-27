@@ -23,7 +23,7 @@
 				$this->where = 'WHERE '.$col.' '.$op.' ?';
 			else
 			{
-				$this->where = $this->where.' AND WHERE '.$col.' '.$op.' ?';
+				$this->where = $this->where.' AND '.$col.' '.$op.' ?';
 			}
 			$this->args[]=$val;
 			return $this->where;
@@ -35,7 +35,7 @@
 			$db = \utils\ConnectionFactory::makeConnection();
 			$stmt = $db->prepare($this->sql);
 			$stmt->execute($this->args);
-			return $stmt->fetch();
+			return $stmt->fetchAll();
 		}
 
 		public function select(array $fields) {
