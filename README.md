@@ -15,11 +15,11 @@ Clone le depot git — git clone https://github.com/Texier54/ORM
 ```
 
 ```
-Importation de la BDD conf/mecado.sql
+Importation de la BDD article.sql
 ```
 
 ```
-Configuration du fichier conf/config.ini
+Configuration du fichier src/utils/config.ini
 ```
 
 ## Authors
