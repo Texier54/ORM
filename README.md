@@ -22,7 +22,7 @@ Importation de la BDD article.sql
 Configuration du fichier src/utils/config.ini
 ```
 
-## Authors
+## Autheur
 
 * **Baptiste Texier** - *Lancement* - [Github](https://github.com/texier54)
 
