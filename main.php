@@ -82,3 +82,13 @@ foreach ($a->get() as $key => $value) {
 	
 	$list = SGBD\Categorie::first(1)->articles();
 	print_r($list);
+	
+	echo '<br><br>';
+	
+	$c = SGBD\Categorie::first(1) ;
+	print_r($c->articles);
+			
+	echo '<br><br>';
+	
+	$a = SGBD\Article::first(64) ;
+	print_r($a->categorie);

@@ -11,8 +11,13 @@
 	            return $this->attribut[$attr_name];
 	        else
 	        {
-		        $emess = __CLASS__ . ": unknown member $attr_name (__get)";
-		        throw new \Exception($emess);
+				if(method_exists($this, $attr_name))
+					return $this->$attr_name();
+				else
+				{
+					$emess = __CLASS__ . ": unknown member $attr_name (__get)";
+					throw new \Exception($emess);
+				}
 			}
 	    }
     
