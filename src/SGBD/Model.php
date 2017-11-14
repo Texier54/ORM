@@ -106,7 +106,12 @@
 
 		public function belongs_to($modele, $id) {
 			$belong = new $modele();
-			return $belong->find([$belong::$primaryKey, '=', $this->attribut[$id]]);
+			return $belong->first([$belong::$primaryKey, '=', $this->attribut[$id]]);
+		}
+		
+		public function has_many($modele, $id) {
+			$many = new $modele();
+			return $many->find([$id, '=', $this->attribut[$many::$primaryKey]]);
 		}
 
 	}

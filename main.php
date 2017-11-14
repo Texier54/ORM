@@ -42,7 +42,7 @@ foreach ($a->get() as $key => $value) {
 
 	echo '<br>';
 
-	$l = SGBD\Article::find(71, ['nom','tarif']);   
+	$l = SGBD\Article::find(66, ['nom','tarif']);   
 	$article = $l[0];
 	print_r($article);
 
@@ -53,7 +53,7 @@ foreach ($a->get() as $key => $value) {
 
 	echo '<br><br>';
 
-	$l = SGBD\Article::find( [['nom','like','%test2%'],['tarif', '<=', 100 ]], ['nom', 'tarif'] );
+	$l = SGBD\Article::find( [['nom','like','%velo%'],['tarif', '<=', 100 ]], ['nom', 'tarif'] );
 	print_r($l);
 
 	echo '<br><br>';
@@ -66,3 +66,19 @@ foreach ($a->get() as $key => $value) {
 	$a=SGBD\Article::first(64);
 	$categorie = $a->belongs_to('SGBD\Categorie', 'id_categ');
 	print_r($categorie);
+	
+	echo '<br><br>';
+	
+	$m = SGBD\Categorie::first(1);
+	$list_article = $m->has_many('SGBD\Article', 'id_categ') ;
+	print_r($list_article);
+		
+	echo '<br><br>';
+	
+	$categorie = SGBD\Article::first(64)->categorie() ;
+	print_r($categorie);
+	
+	echo '<br><br>';
+	
+	$list = SGBD\Categorie::first(1)->articles();
+	print_r($list);
